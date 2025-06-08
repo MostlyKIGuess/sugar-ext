@@ -1,0 +1,92 @@
+/* sugar-ext-version.h.in
+ *
+ * Copyright 2025 MostlyK
+ *
+ * This program is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation, either version 3 of the License, or
+ * (at your option) any later version.
+ *
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License
+ * along with this program.  If not, see <https://www.gnu.org/licenses/>.
+ *
+ * SPDX-License-Identifier: LGPL-2.1
+ */
+
+#pragma once
+
+/**
+ * SECTION:sugar-ext-version
+ * @short_description: sugar-ext version checking
+ *
+ * sugar-ext provides macros to check the version of the library
+ * at compile-time
+ */
+
+/**
+ * SUGAR_EXT_C_MAJOR_VERSION:
+ *
+ * sugar-ext major version component (e.g. 1 if %SUGAR_EXT_C_VERSION is 1.2.3)
+ */
+#define SUGAR_EXT_C_MAJOR_VERSION (@MAJOR_VERSION@)
+
+/**
+ * SUGAR_EXT_C_MINOR_VERSION:
+ *
+ * sugar-ext minor version component (e.g. 2 if %SUGAR_EXT_C_VERSION is 1.2.3)
+ */
+#define SUGAR_EXT_C_MINOR_VERSION (@MINOR_VERSION@)
+
+/**
+ * SUGAR_EXT_C_MICRO_VERSION:
+ *
+ * sugar-ext micro version component (e.g. 3 if %SUGAR_EXT_C_VERSION is 1.2.3)
+ */
+#define SUGAR_EXT_C_MICRO_VERSION (@MICRO_VERSION@)
+
+/**
+ * SUGAR_EXT_C_VERSION
+ *
+ * sugar-ext version.
+ */
+#define SUGAR_EXT_C_VERSION (@VERSION@)
+
+/**
+ * SUGAR_EXT_C_VERSION_S:
+ *
+ * sugar-ext version, encoded as a string, useful for printing and
+ * concatenation.
+ */
+#define SUGAR_EXT_C_VERSION_S "@VERSION@"
+
+#define SUGAR_EXT_C_ENCODE_VERSION(major,minor,micro) \
+        ((major) << 24 | (minor) << 16 | (micro) << 8)
+
+/**
+ * SUGAR_EXT_C_VERSION_HEX:
+ *
+ * sugar-ext version, encoded as an hexadecimal number, useful for
+ * integer comparisons.
+ */
+#define SUGAR_EXT_C_VERSION_HEX \
+        (SUGAR_EXT_C_ENCODE_VERSION (SUGAR_EXT_C_MAJOR_VERSION, SUGAR_EXT_C_MINOR_VERSION, SUGAR_EXT_C_MICRO_VERSION))
+
+/**
+ * SUGAR_EXT_C_CHECK_VERSION:
+ * @major: required major version
+ * @minor: required minor version
+ * @micro: required micro version
+ *
+ * Compile-time version checking. Evaluates to %TRUE if the version
+ * of sugar-ext is greater than the required one.
+ */
+#define SUGAR_EXT_C_CHECK_VERSION(major,minor,micro)   \
+        (SUGAR_EXT_C_MAJOR_VERSION > (major) || \
+         (SUGAR_EXT_C_MAJOR_VERSION == (major) && SUGAR_EXT_C_MINOR_VERSION > (minor)) || \
+         (SUGAR_EXT_C_MAJOR_VERSION == (major) && SUGAR_EXT_C_MINOR_VERSION == (minor) && \
+          SUGAR_EXT_C_MICRO_VERSION >= (micro)))
