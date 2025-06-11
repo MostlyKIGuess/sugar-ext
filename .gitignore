@@ -27,3 +27,6 @@ config.h
 
 *.tmp
 *.temp
+.clangd
+Docs.md
+
