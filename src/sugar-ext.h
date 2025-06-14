@@ -21,6 +21,7 @@
 #pragma once
 
 #include <gtk/gtk.h>
+#include "sugar-grid.h"
 
 G_BEGIN_DECLS
 

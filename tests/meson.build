@@ -34,7 +34,15 @@ test_utilities = executable('test_utilities',
   install: false,
 )
 
+# Sugar Grid specific test
+test_sugar_grid = executable('test_sugar_grid',
+  'test_sugar_grid.c',
+  dependencies: sugar_lib_dep,
+  install: false,
+)
+
 # Register tests with meson
 test('main_functionality', test_main)
 test('xo_colors', test_xo_colors)
 test('utilities', test_utilities)
+test('sugar_grid', test_sugar_grid)

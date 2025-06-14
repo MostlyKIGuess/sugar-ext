@@ -1,5 +1,5 @@
 project('sugar-ext', 'c',
-          version: '2.0.0',
+          version: '4.0.0',
     meson_version: '>= 1.0.0',
   default_options: [ 'warning_level=2', 'werror=false', 'c_std=gnu11', ],
 )
@@ -80,4 +80,5 @@ add_project_arguments(project_c_args, language: 'c')
 
 subdir('src')
 subdir('tests')
+subdir('examples')
 

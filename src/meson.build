@@ -2,10 +2,12 @@ api_version = '0.1'
 
 sugar_ext_sources = [
   'sugar-ext.c',
+  'sugar-grid.c',
 ]
 
 sugar_ext_headers = [
   'sugar-ext.h',
+  'sugar-grid.h',
 ]
 
 version_split = meson.project_version().split('.')

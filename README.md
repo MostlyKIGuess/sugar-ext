@@ -20,14 +20,24 @@ meson test -C builddir
 ```
 
 Tests include:
+
 - `main_functionality`: Comprehensive test of all features
 - `xo_colors`: Advanced XO Colors functionality testing
 - `utilities`: Utility functions testing
+- `sugar_grid`: Sugar Grid spatial layout system testing
 
 ## Installation
 
 ```bash
 meson install -C builddir
+```
+
+## Examples > [!WARNING]
+
+```bash
+meson compile -C builddir 
+# then follow by the example you want to run
+./builddir/examples/example_name
 ```
 
 ## Dependencies
@@ -36,4 +46,3 @@ meson install -C builddir
 - GLib >= 2.70
 - GObject
 - GIO
-
