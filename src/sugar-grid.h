@@ -30,7 +30,7 @@ typedef struct _SugarGridClass SugarGridClass;
 
 #define SUGAR_TYPE_GRID			     (sugar_grid_get_type())
 #define SUGAR_GRID(object)	         (G_TYPE_CHECK_INSTANCE_CAST((object), SUGAR_TYPE_GRID, SugarGrid))
-#define SUGAR_GRID_CLASS(klass)	     (G_TYPE_CHECK_CLASS_CAST((klass), SUGAR_TYPE_GRID, SugarGridClass))
+#define SUGAR_GRID_CLASS(klass)	     (G_TYPE_CHACK_CLASS_CAST((klass), SUGAR_TYPE_GRID, SugarGridClass))
 #define SUGAR_IS_GRID(object)	     (G_TYPE_CHECK_INSTANCE_TYPE((object), SUGAR_TYPE_GRID))
 #define SUGAR_IS_GRID_CLASS(klass)   (G_TYPE_CHECK_CLASS_TYPE((klass), SUGAR_TYPE_GRID))
 #define SUGAR_GRID_GET_CLASS(object) (G_TYPE_INSTANCE_GET_CLASS((object), SUGAR_TYPE_GRID, SugarGridClass))
@@ -55,7 +55,8 @@ void     sugar_grid_add_weight     (SugarGrid    *grid,
                                     GdkRectangle *rect);
 void     sugar_grid_remove_weight  (SugarGrid    *grid,
                                     GdkRectangle *rect);
-guint    sugar_grid_compute_weight (SugarGrid    *grid, GdkRectangle *rect);
+guint    sugar_grid_compute_weight (SugarGrid    *grid,
+                                    GdkRectangle *rect);
 
 G_END_DECLS
 

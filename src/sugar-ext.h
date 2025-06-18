@@ -22,26 +22,10 @@
 
 #include <gtk/gtk.h>
 #include "sugar-grid.h"
+#include "sugar-file-attributes.h"
+#include "controllers/sugar-event-controllers.h"
 
 G_BEGIN_DECLS
-
-/**
- * SugarXOColors:
- * @fill_color: The fill color (RGBA)
- * @stroke_color: The stroke color (RGBA)
- *
- * Structure representing XO buddy colors used in Sugar.
- */
-typedef struct {
-    GdkRGBA fill_color;
-    GdkRGBA stroke_color;
-} SugarXOColors;
-
-/* XO Colors API */
-SugarXOColors* sugar_xo_colors_new(void);
-SugarXOColors* sugar_xo_colors_new_from_string(const gchar *color_spec);
-void sugar_xo_colors_free(SugarXOColors *colors);
-gchar* sugar_xo_colors_to_string(SugarXOColors *colors);
 
 /* Utility functions */
 gdouble sugar_get_grid_cell_size(void);

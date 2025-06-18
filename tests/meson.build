@@ -20,13 +20,6 @@ test_main = executable('test_main',
   install: false,
 )
 
-# XO Colors specific test
-test_xo_colors = executable('test_xo_colors',
-  'test_xo_colors.c',
-  dependencies: sugar_lib_dep,
-  install: false,
-)
-
 # Utility functions specific test
 test_utilities = executable('test_utilities',
   'test_utilities.c',
@@ -41,8 +34,31 @@ test_sugar_grid = executable('test_sugar_grid',
   install: false,
 )
 
+# Sugar File Attributes specific test
+test_sugar_file_attributes = executable('test_sugar_file_attributes',
+  'test_sugar_file_attributes.c',
+  dependencies: sugar_lib_dep,
+  install: false,
+)
+
+# Sugar Event Controller specific test
+test_sugar_event_controller = executable('test_sugar_event_controller',
+  'test_sugar_event_controller.c',
+  dependencies: sugar_lib_dep,
+  install: false,
+)
+
+# Sugar Long Press Controller specific test
+test_sugar_long_press_controller = executable('test_sugar_long_press_controller',
+  'test_sugar_long_press_controller.c',
+  dependencies: sugar_lib_dep,
+  install: false,
+)
+
 # Register tests with meson
 test('main_functionality', test_main)
-test('xo_colors', test_xo_colors)
 test('utilities', test_utilities)
 test('sugar_grid', test_sugar_grid)
+test('sugar_file_attributes', test_sugar_file_attributes)
+test('sugar_event_controller', test_sugar_event_controller)
+test('sugar_long_press_controller', test_sugar_long_press_controller)
