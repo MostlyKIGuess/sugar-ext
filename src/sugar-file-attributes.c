@@ -429,3 +429,26 @@ sugar_file_attributes_mark_as_created_by(GFile *file, const gchar *activity_name
     g_free(path);
     return result;
 }
+
+static SugarFileAttributes*
+sugar_file_attributes_copy(const SugarFileAttributes *attrs)
+{
+    if (!attrs) return NULL;
+
+    SugarFileAttributes *new_attrs = g_new0(SugarFileAttributes, 1);
+
+    new_attrs->title = g_strdup(attrs->title);
+    new_attrs->description = g_strdup(attrs->description);
+    new_attrs->tags = g_strdup(attrs->tags);
+    new_attrs->activity = g_strdup(attrs->activity);
+    new_attrs->preview_path = g_strdup(attrs->preview_path);
+    new_attrs->creation_time = attrs->creation_time;
+    new_attrs->modification_time = attrs->modification_time;
+
+    return new_attrs;
+}
+
+G_DEFINE_BOXED_TYPE(SugarFileAttributes,
+                    sugar_file_attributes,
+                    sugar_file_attributes_copy,
+                    sugar_file_attributes_free)

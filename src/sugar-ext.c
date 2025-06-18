@@ -41,16 +41,16 @@ sugar_get_grid_cell_size(void)
 
 /**
  * sugar_scale_for_touch:
- * @base_size: The base size to scale
+ * @size: The base size to scale
  *
  * Scales a size to be more touch-friendly.
  *
  * Returns: The scaled size, ensuring minimum 44px for touch targets.
  */
 gdouble
-sugar_scale_for_touch(gdouble base_size)
+sugar_scale_for_touch(gdouble size)
 {
-    return MAX(base_size, MIN_TOUCH_SIZE);
+    return MAX(size, MIN_TOUCH_SIZE);
 }
 
 /**

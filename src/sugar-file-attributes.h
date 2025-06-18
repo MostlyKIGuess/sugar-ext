@@ -36,6 +36,7 @@ G_BEGIN_DECLS
  * @preview_path: Path to preview/thumbnail image
  *
  * Extended attributes for Sugar activity files.
+ * @gtype-name SugarFileAttributes
  */
 typedef struct {
     gchar *title;
@@ -46,6 +47,8 @@ typedef struct {
     gint64 modification_time;
     gchar *preview_path;
 } SugarFileAttributes;
+
+GType sugar_file_attributes_get_type (void);
 
 /* File attributes API */
 SugarFileAttributes* sugar_file_attributes_new              (void);

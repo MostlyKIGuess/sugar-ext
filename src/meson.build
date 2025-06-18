@@ -1,14 +1,27 @@
 api_version = '0.1'
 
+subdir('controllers')
+
+controllers_sources_full = []
+foreach src : controllers_sources
+  controllers_sources_full += 'controllers' / src
+endforeach
+
+# For headers, only include the main controllers header, not individual ones
+# The individual headers are protected by include guards
+controllers_main_header = ['controllers/sugar-event-controllers.h']
+
 sugar_ext_sources = [
   'sugar-ext.c',
   'sugar-grid.c',
-]
+  'sugar-file-attributes.c',
+] + controllers_sources_full
 
 sugar_ext_headers = [
   'sugar-ext.h',
   'sugar-grid.h',
-]
+  'sugar-file-attributes.h',
+] + controllers_main_header
 
 version_split = meson.project_version().split('.')
 version_conf = configuration_data()
@@ -58,9 +71,9 @@ sugar_ext_gir = gnome.generate_gir(sugar_ext_lib,
                header: 'sugar-ext.h',
       export_packages: 'sugar-ext-' + api_version,
             nsversion: api_version,
-            namespace: 'SugarExt',
-        symbol_prefix: 'sugarext',
-    identifier_prefix: 'SugarExt',
+            namespace: 'Sugar',
+        symbol_prefix: 'sugar',
+    identifier_prefix: 'Sugar',
              includes: ['Gtk-4.0', 'Gio-2.0'],
               install: true,
 )
